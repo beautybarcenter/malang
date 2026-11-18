@@ -4405,10 +4405,10 @@
                 margin-bottom: 8px;
               "
             >
-              🎨 Kustomisasi Tampilan Web
+              🎨 Kustomisasi Tampilan
             </p>
             <div class="form-group">
-              <label style="font-size: 0.75rem">Pilih Tema Warna:</label>
+              <label style="font-size: 0.75rem">Pilih Tema :</label>
               <select
                 id="custThemePresetInput"
                 class="status-select"
@@ -4430,7 +4430,7 @@
             <!-- Pilihan Font Khusus untuk Judul Utama (Lash & Brow Bar) dan Judul Katalog Layanan dengan Live Preview -->
             <div class="form-group">
               <label style="font-size: 0.75rem"
-                >🔤 Pilih Jenis Font Utama (Lash &amp; Brow Bar &amp; Judul Katalog):</label
+                >🔤 Pilih Jenis Font (Lash Brow Bar &amp; Judul Katalog):</label
               >
 
               <!-- Kotak Preview Live Font -->
@@ -4495,7 +4495,7 @@
             </div>
             <div class="form-group" style="margin-bottom: 15px">
               <label style="font-size: 0.75rem"
-                >🌸 Foto Utama Beranda (Upload dari Galeri HP):</label
+                >🌸 Foto Utama Beranda :</label
               >
               <div class="upload-row">
                 <input
@@ -4517,7 +4517,7 @@
 
             <div class="form-group" style="margin-bottom: 15px">
               <label style="font-size: 0.75rem"
-                >💳 Foto QRIS Pembayaran (Upload dari Galeri HP):</label
+                >💳 Foto QRIS Pembayaran :</label
               >
               <div class="upload-row">
                 <input
@@ -4553,7 +4553,7 @@
                 margin-bottom: 8px;
               "
             >
-              🏖️ Pengaturan Mode Libur Website
+              🏖️ Mode Libur Website
             </p>
             <div
               class="form-group"
@@ -4586,7 +4586,7 @@
                   margin-bottom: 0;
                   cursor: pointer;
                 "
-                >🚨 Aktifkan Mode Libur Website</label
+                >🚨 Aktifkan </label
               >
             </div>
             <div
@@ -4594,7 +4594,7 @@
               style="margin-top: 6px; margin-bottom: 15px"
             >
               <label style="font-size: 0.75rem"
-                >💬 Pesan Pengumuman Libur:</label
+                >💬 Pengumuman Libur :</label
               >
               <textarea
                 id="holidayMessageInput"
@@ -4661,7 +4661,7 @@
                   onchange="renderBlockedHoursEditor()"
                 />
                 <small style="font-size: 0.68rem; color: var(--text-muted)"
-                  >Format 24 Jam (HH:MM)</small
+                  >Format 24 Jam</small
                 >
               </div>
               <div class="form-group" style="margin-bottom: 0">
@@ -4679,7 +4679,7 @@
                   onchange="renderBlockedHoursEditor()"
                 />
                 <small style="font-size: 0.68rem; color: var(--text-muted)"
-                  >Format 24 Jam (HH:MM)</small
+                  >Format 24 Jam</small
                 >
               </div>
             </div>
@@ -4700,7 +4700,7 @@
                 margin-bottom: 8px;
               "
             >
-              🚫 Blokir Jam atau Tanggal Spesifik
+              🚫 Blokir Jam atau Tanggal
             </p>
 
             <div
@@ -4802,7 +4802,7 @@
 
             <div class="form-group" style="margin-bottom: 15px">
               <label style="font-size: 0.75rem"
-                >📋 Daftar Histori Jam/Hari yang Telah Diblokir:</label
+                >📋 Daftar yang Telah Diblokir:</label
               >
               <div
                 id="blockedHistoryListContainer"
@@ -4828,7 +4828,7 @@
               class="btn-gold"
               style="width: 100%; margin-top: 10px"
             >
-              💾 Simpan Pengaturan & Kustomisasi
+              💾 Simpan
             </button>
 
             <!-- Bagian Ubah Kata Sandi Admin -->
@@ -4960,7 +4960,7 @@
           <!-- ===== TAB INFO KATALOG (ADMIN) ===== -->
           <div id="admin-tab-info-katalog" class="admin-tab-content card">
             <h4 style="color:var(--accent); margin:0 0 4px 0; font-size:1rem"><i class="fa-solid fa-book-open"></i> Pengaturan Info Katalog</h4>
-            <p style="color:var(--text-muted); font-size:0.78rem; margin:0 0 16px 0">Edit penjelasan layanan, ketahanan, durasi, dan booking policy.</p>
+            <p style="color:var(--text-muted); font-size:0.78rem; margin:0 0 16px 0">Edit penjelasan layanan, ketahanan, durasi, dan Syarat Ketentuan.</p>
 
             <!-- SUB TAB NAVIGATION -->
             <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:10px;">
@@ -5001,13 +5001,13 @@
 
             <!-- SUB: BOOKING POLICY -->
             <div id="infoPanel-policy" class="info-sub-panel" style="display:none">
-              <p style="font-size:0.76rem; color:var(--text-muted); margin-bottom:10px">Atur poin-poin syarat dan ketentuan booking.</p>
+              <p style="font-size:0.76rem; color:var(--text-muted); margin-bottom:10px">Atur poin-poin syarat dan ketentuan.</p>
               <div id="policyEditorContainer"></div>
-              <button type="button" onclick="addPolicyItem()" style="background:#0a2611; color:#51cf66; border:1px solid #144720; width:100%; padding:7px; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:8px; font-size:0.78rem;">➕ Tambah Poin Policy</button>
+              <button type="button" onclick="addPolicyItem()" style="background:#0a2611; color:#51cf66; border:1px solid #144720; width:100%; padding:7px; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:8px; font-size:0.78rem;">➕ Tambah Poin</button>
             </div>
 
             <button type="button" id="saveInfoKatalogBtn" onclick="saveInfoKatalog()" class="btn-gold" style="width:100%; margin-top:14px;">
-              💾 Simpan Info Katalog ke Database
+              💾 Simpan Info Katalog
             </button>
           </div>
 
