@@ -2702,10 +2702,14 @@
                                 </div>
                             </div>
 
-                            <!-- Ketahanan + Kategori (Tampil di Katalog) -->
-                            <div style="display: flex; gap: 6px; align-items: center;">
-                                <input type="text" class="service-input" id="editCategory${index}" value="${s.category || "Lash Treatment"}" placeholder="Kategori (cth: Lash Treatment)" style="padding: 4px 6px; font-size: 0.75rem; flex: 1;" list="categorySuggestions">
-                                <input type="text" class="service-input" id="editDurability${index}" value="${s.durability || ""}" placeholder="Ketahanan (misal: Ketahanan ± 2 Bulan)" style="padding: 4px 6px; font-size: 0.75rem; flex: 1.2;">
+                            <!-- Kategori Layanan -->
+                            <div style="display: flex; width: 100%; min-width: 0;">
+                                <input type="text" class="service-input" id="editCategory${index}" value="${s.category || "Lash Treatment"}" placeholder="Kategori (cth: Lash Treatment)" style="padding: 4px 6px; font-size: 0.75rem; width: 100%; min-width: 0;" list="categorySuggestions">
+                            </div>
+
+                            <!-- Ketahanan ditempatkan di bawah Kategori Layanan -->
+                            <div style="display: flex; width: 100%; min-width: 0;">
+                                <input type="text" class="service-input" id="editDurability${index}" value="${s.durability || ""}" placeholder="Ketahanan (misal: Ketahanan ± 2 Bulan)" style="padding: 4px 6px; font-size: 0.75rem; width: 100%; min-width: 0;">
                             </div>
                         </div>
 
@@ -2721,7 +2725,8 @@
           <datalist id="categorySuggestions">
             ${getCategoryNames().map(c => `<option value="${c}"></option>`).join("")}
           </datalist>
-          <button type="button" id="addServiceBtn" onclick="addNewServiceItem()" style="background: #0a2611; color: #51cf66; border: 1px solid #144720; width: 100%; padding: 8px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 8px; font-size: 0.8rem;">➕ Tambah Layanan Baru</button>`;
+          <button type="button" id="addServiceBtn" onclick="addNewServiceItem()" style="background: #0a2611; color: #51cf66; border: 1px solid #144720; width: 100%; padding: 8px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 8px; font-size: 0.8rem;">➕ Tambah Layanan Baru</button>
+          <button type="button" id="saveServicesBtn" onclick="saveServicesConfig()" class="btn-gold" style="width: 100%; margin-top: 8px;">💾 Simpan Layanan &amp; Katalog ke Database</button>`;
       }
 
       function handleServiceImageFile(input, index) {
