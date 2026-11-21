@@ -2023,7 +2023,7 @@
           .forEach((btn) => (btn.disabled = isDisabled));
       }
 
-      async function refreshBookingPricingConfig() {
+      async function r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8() {
         // Ambil ulang harga layanan dan aturan sesi gabungan tanpa menghapus data pelanggan.
         const count = parseInt(document.getElementById("cCount")?.value, 10) || 1;
         const previousSelections = {};
@@ -2121,7 +2121,7 @@
         } catch (error) {
           if (error.status === 409) {
             // Muat ulang harga/aturan terbaru tanpa menghapus pilihan layanan pelanggan.
-            try { await refreshBookingPricingConfig(); } catch (refreshError) { console.warn("Gagal memuat harga terbaru", refreshError); }
+            try { await r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8(); } catch (refreshError) { console.warn("Gagal memuat harga terbaru", refreshError); }
           }
           showToast(error.message || "Gagal mengirim booking. Periksa kembali total pembayaran.", "warning");
           setFormDisabled(false);
@@ -2415,7 +2415,7 @@
           .getElementById("admin-tab-" + tabName)
           .classList.add("active-content");
         btn.classList.add("active-tab");
-        if (tabName === "services") { renderServicesEditor(); renderCategoryEditor(); renderSessionCombinationsEditor(); }
+        if (tabName === "services") { renderServicesEditor(); renderCategoryEditor(); r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8(); }
         if (tabName === "customize") {
           renderOperationalDaysConfig();
           renderBlockedHistoryList();
@@ -2455,10 +2455,10 @@
       function toggleSessionCombinationRule(index) {
         if (expandedSessionCombinationRules.has(index)) expandedSessionCombinationRules.delete(index);
         else expandedSessionCombinationRules.add(index);
-        renderSessionCombinationsEditor();
+        r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8();
       }
 
-      function renderSessionCombinationsEditor() {
+      function r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8() {
         const container = document.getElementById('sessionCombinationEditorContainer');
         if (!container) return;
         if (!Array.isArray(siteSettings.sessionCombinations)) siteSettings.sessionCombinations = [];
@@ -2510,7 +2510,7 @@
         });
         expandedSessionCombinationRules.clear();
         expandedSessionCombinationRules.add(siteSettings.sessionCombinations.length - 1);
-        renderSessionCombinationsEditor();
+        r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8();
       }
 
       function updateSessionCombinationField(index, field, value) {
@@ -2540,7 +2540,7 @@
         if (!rule) return;
         rule.serviceNames = [...document.querySelectorAll(`.combo-service-choice[data-rule-index="${index}"]:checked`)]
           .map(input => input.dataset.serviceName).filter(Boolean);
-        renderSessionCombinationsEditor();
+        r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8();
       }
 
       function deleteSessionCombinationRule(index) {
@@ -2548,7 +2548,7 @@
         if (!confirm('Hapus aturan sesi gabungan ini?')) return;
         siteSettings.sessionCombinations.splice(index, 1);
         expandedSessionCombinationRules.clear();
-        renderSessionCombinationsEditor();
+        r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8();
       }
 
       async function saveSessionCombinationRules() {
@@ -2587,7 +2587,7 @@
             body: JSON.stringify({ action: 'actionSettings', settings: { ...siteSettings, sessionCombinations: cleanRules } })
           });
           siteSettings.sessionCombinations = cleanRules;
-          renderSessionCombinationsEditor();
+          r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8();
           calculateTotal();
           showToast('Aturan Sesi Gabungan berhasil disimpan ke database.', 'success');
         } catch (error) {
@@ -2766,7 +2766,7 @@
         renderServicesEditor();
         renderCatalogUI();
         renderCustomerServices();
-        renderSessionCombinationsEditor();
+        r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8();
       }
 
       function deleteServiceItem(i) {
@@ -2776,7 +2776,7 @@
           renderServicesEditor();
           renderCatalogUI();
           renderCustomerServices();
-          renderSessionCombinationsEditor();
+          r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8();
         }
       }
 
@@ -3009,7 +3009,7 @@
           renderServicesEditor();
           renderCatalogUI();
           renderCustomerServices();
-          renderSessionCombinationsEditor();
+          r9yMnTm4NSzvG9rrwjM2ec8xZgh1cafXH8();
         } catch (e) {
           showToast("Gagal menyimpan ke server.", "warning");
         } finally {
@@ -3465,6 +3465,7 @@
 
 
       let rawAdminBookingsCache = [];
+      let selectedAdminBookingIds = new Set();
       let currentAdminDateFilter = "today";
 
       function setAdminDateFilter(filterType, btnElement) {
@@ -3617,6 +3618,7 @@
                         <table class="admin-booking-table">
                             <thead>
                                 <tr>
+                                    <th style="width:42px; text-align:center;"><input type="checkbox" title="Pilih semua booking yang tampil" onchange="toggleSelectVisibleBookings(this.checked)"></th>
                                     <th style="min-width: 135px; width: 135px;">📌 Status</th>
                                     <th style="width: 100px;">🕒 Jam Booking</th>
                                     <th style="width: max-content; white-space: nowrap;">💆 Layanan Dipilih</th>
@@ -3684,6 +3686,7 @@
 
             tableHtml += `
                             <tr class="${rowStatusClass}">
+                                <td style="text-align:center"><input type="checkbox" class="admin-booking-select" value="${itemId}" ${selectedAdminBookingIds.has(String(itemId)) ? "checked" : ""} onchange="toggleAdminBookingSelection('${itemId}',this.checked)"></td>
                                 <td>
                                     <select class="table-status-select" onchange="handleStatusCheckAndChange(this, '${itemId}')">
                                         <option value="Pending" ${st === "Pending" ? "selected" : ""}>⏳ Pending</option>
@@ -3723,9 +3726,38 @@
                 `;
           dateSectionDiv.innerHTML += tableHtml;
           container.appendChild(dateSectionDiv);
-          container.appendChild(dateSectionDiv);
+          updateAdminDeleteControls();
         });
       }
+
+      function getCurrentlyFilteredAdminBookings() {
+        let searchKeyword = document.getElementById("adminSearchInput") ? document.getElementById("adminSearchInput").value.toLowerCase().trim() : "";
+        let startDate = document.getElementById("filterStartDate").value, endDate = document.getElementById("filterEndDate").value;
+        let todayStr = getLocalTodayStr(), tomorrowDate = new Date(); tomorrowDate.setDate(tomorrowDate.getDate()+1);
+        let tomorrowStr = `${tomorrowDate.getFullYear()}-${String(tomorrowDate.getMonth()+1).padStart(2,"0")}-${String(tomorrowDate.getDate()).padStart(2,"0")}`;
+        return rawAdminBookingsCache.filter(item => {
+          let name=(item.nama||item.name||"").toLowerCase(), phone=cleanPhone(item.whatsapp||item.phone).toLowerCase();
+          if(!(name.includes(searchKeyword)||phone.includes(searchKeyword))) return false;
+          let timeVal=item.waktu||item.datetime||""; if(!timeVal)return false; let dateKey=getStandardDateKey(timeVal);
+          if(currentAdminDateFilter==="today")return dateKey===todayStr;
+          if(currentAdminDateFilter==="tomorrow")return dateKey===tomorrowStr;
+          if(currentAdminDateFilter==="custom")return (!startDate||dateKey>=startDate)&&(!endDate||dateKey<=endDate);
+          return true;
+        });
+      }
+      function toggleAdminBookingSelection(id, checked){ if(checked)selectedAdminBookingIds.add(String(id));else selectedAdminBookingIds.delete(String(id)); updateAdminDeleteControls(); }
+      function toggleSelectVisibleBookings(checked){ getCurrentlyFilteredAdminBookings().forEach(item=>{let id=String(item.id);if(checked)selectedAdminBookingIds.add(id);else selectedAdminBookingIds.delete(id);}); renderFilteredAdminBookings(); }
+      function updateAdminDeleteControls(){ let count=selectedAdminBookingIds.size, btn=document.getElementById("adminDeleteSelectedBtn");if(btn)btn.textContent=`🗑 Hapus Dipilih (${count})`; }
+      async function deleteAdminBookings(ids, mode){
+        ids=[...new Set(ids.map(String).filter(Boolean))]; if(!ids.length){showToast("Pilih booking yang akan dihapus.","warning");return;}
+        let confirmText=mode==="visible"?`Hapus ${ids.length} transaksi yang sedang tampil?`:`Hapus ${ids.length} transaksi terpilih?`;
+        if(!confirm(confirmText+"\nData yang dihapus tidak dapat dikembalikan."))return;
+        try{let response=await supabaseFetch(SCRIPT_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"deleteBookings",ids})});let result=await response.json();if(!response.ok||result.status!=="success")throw new Error(result.message||"Gagal menghapus transaksi");
+          rawAdminBookingsCache=rawAdminBookingsCache.filter(item=>!ids.includes(String(item.id)));ids.forEach(id=>selectedAdminBookingIds.delete(id));renderFilteredAdminBookings();updateAdminDeleteControls();showToast(`✓ ${ids.length} transaksi berhasil dihapus`);
+        }catch(err){showToast(err.message||"Gagal menghapus transaksi.","warning");}
+      }
+      function deleteSelectedAdminBookings(){deleteAdminBookings([...selectedAdminBookingIds],"selected");}
+      function deleteVisibleAdminBookings(){deleteAdminBookings(getCurrentlyFilteredAdminBookings().map(item=>item.id),"visible");}
 
       function filterAdminBookings() {
         renderFilteredAdminBookings();
