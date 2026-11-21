@@ -583,9 +583,9 @@
         text-align: center;
       }
       .slot-btn.selected {
-        background: #757575 !important;
+        background: #000000 !important;
         color: #FFFFFF !important;
-        border-color: #757575 !important;
+        border-color: #000000 !important;
         box-shadow: 0 6px 18px rgba(45, 42, 46, 0.25);
         font-weight: 700;
       }
@@ -1664,9 +1664,9 @@
         color: var(--accent);
       }
       .slot-btn.selected {
-        background: #757575 !important;
+        background: #000000 !important;
         color: #FFFFFF !important;
-        border-color: #757575 !important;
+        border-color: #000000 !important;
         box-shadow: 0 6px 18px rgba(45, 42, 46, 0.25);
       }
       .slot-btn:disabled {
