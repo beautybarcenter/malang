@@ -2467,7 +2467,7 @@
           container.innerHTML = '<div style="padding:12px;text-align:center;color:var(--text-muted);font-size:.8rem;border:1px dashed var(--border);border-radius:10px">Belum ada aturan sesi gabungan. Tambahkan aturan saat data kombinasi sudah siap.</div>';
           return;
         }
-        container.innerHTML = `<div style="font-size:.75rem;color:var(--text-muted);margin-bottom:10px">Total ${rules.length} aturan. Satu layanan boleh digunakan pada banyak aturan gabungan yang berbeda.</div>` + rules.map((rule, index) => {
+        container.innerHTML = rules.map((rule, index) => {
           const selected = Array.isArray(rule.serviceNames) ? rule.serviceNames : [];
           const isExpanded = expandedSessionCombinationRules.has(index);
           const knownNames = new Set(servicesList.map(service => String(service.name || '')));
