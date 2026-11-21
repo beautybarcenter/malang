@@ -3746,7 +3746,31 @@
         });
       }
       function toggleAdminBookingSelection(id, checked){ if(checked)selectedAdminBookingIds.add(String(id));else selectedAdminBookingIds.delete(String(id)); updateAdminDeleteControls(); }
-      function toggleSelectVisibleBookings(checked){ getCurrentlyFilteredAdminBookings().forEach(item=>{let id=String(item.id);if(checked)selectedAdminBookingIds.add(id);else selectedAdminBookingIds.delete(id);}); renderFilteredAdminBookings(); }
+      function toggleSelectVisibleBookings(checked) {
+  const visibleBookings = getCurrentlyFilteredAdminBookings();
+
+  visibleBookings.forEach(item => {
+    const id = String(item.id);
+
+    if (checked) {
+      selectedAdminBookingIds.add(id);
+    } else {
+      selectedAdminBookingIds.delete(id);
+    }
+  });
+
+  // Sinkronkan checkbox pada baris booking yang sedang tampil
+  document.querySelectorAll(".admin-booking-select").forEach(checkbox => {
+    const id = String(checkbox.value);
+
+    if (visibleBookings.some(item => String(item.id) === id)) {
+      checkbox.checked = checked;
+    }
+  });
+
+  // Perbarui jumlah booking yang dipilih pada tombol hapus
+  updateAdminDeleteControls();
+}
       function updateAdminDeleteControls(){ let count=selectedAdminBookingIds.size, btn=document.getElementById("adminDeleteSelectedBtn");if(btn)btn.textContent=`🗑 Hapus Dipilih (${count})`; }
       async function deleteAdminBookings(ids, mode){
         ids=[...new Set(ids.map(String).filter(Boolean))]; if(!ids.length){showToast("Pilih booking yang akan dihapus.","warning");return;}
