@@ -583,9 +583,10 @@
         text-align: center;
       }
       .slot-btn.selected {
-        background: var(--accent) !important;
-        color: #000000 !important;
-        border-color: var(--accent) !important;
+        background: #2D2A2E !important;
+        color: #FFFFFF !important;
+        border-color: #2D2A2E !important;
+        box-shadow: 0 6px 18px rgba(45, 42, 46, 0.25);
         font-weight: 700;
       }
       .slot-btn:disabled {
@@ -1663,9 +1664,10 @@
         color: var(--accent);
       }
       .slot-btn.selected {
-        background: var(--accent-gradient) !important;
-        color: var(--ink) !important;
-        box-shadow: 0 6px 18px rgba(243, 156, 192, 0.3);
+        background: #2D2A2E !important;
+        color: #FFFFFF !important;
+        border-color: #2D2A2E !important;
+        box-shadow: 0 6px 18px rgba(45, 42, 46, 0.25);
       }
       .slot-btn:disabled {
         background: rgba(0, 0, 0, 0.25);
