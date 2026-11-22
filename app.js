@@ -917,7 +917,7 @@
         if (isNaN(openMin)) openMin = 600;
         if (isNaN(closeMin)) closeMin = 1260;
 
-        for (let m = openMin; m < closeMin; m += 15) {
+        for (let m = openMin; m < closeMin; m += 30) {
           let h = Math.floor(m / 60),
             min = m % 60;
           let hourStr =
@@ -1688,7 +1688,7 @@
           container.innerHTML = "";
           let availableCount = 0;
 
-          for (let m = openMin; m < closeMin; m += 15) {
+          for (let m = openMin; m < closeMin; m += 30) {
             let h = Math.floor(m / 60),
               min = m % 60;
             let hourStr =
